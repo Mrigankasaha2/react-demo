@@ -7,6 +7,7 @@ export default function BasicAPICall() {
     axios
       .get('https://jsonplaceholder.typicode.com/posts')
       .then((response) => {
+        console.log('API Call');
         setData(response.data);
       })
       .catch((err) => {
@@ -16,26 +17,31 @@ export default function BasicAPICall() {
   let tabledata = () => {
     return data.map((row) => {
       return (
-        <tr key={row.id}>
-          <td>{row.userId}</td>
-          <td>{row.id}</td>
-          <td>{row.title}</td>
-          <td>{row.body}</td>
+        <tr
+          key={row.id}
+          className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+        >
+          <td className="px-6 py-4">{row.userId}</td>
+          <td className="px-6 py-4">{row.id}</td>
+          <td className="px-6 py-4">{row.title}</td>
+          <td className="px-6 py-4">{row.body}</td>
         </tr>
       );
     });
   };
   return (
-    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-        <tr>
-          <th>UserID</th>
-          <th>ID</th>
-          <th>Title</th>
-          <th>Body</th>
-        </tr>
-      </thead>
-      <tbody>{tabledata()}</tbody>
-    </table>
+    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th className="px-6 py-3">UserID</th>
+            <th className="px-6 py-3">ID</th>
+            <th className="px-6 py-3">Title</th>
+            <th className="px-6 py-3">Body</th>
+          </tr>
+        </thead>
+        <tbody>{tabledata()}</tbody>
+      </table>
+    </div>
   );
 }

@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="p-16">
       <CounterComponent />
-      <div className="flex flex-row">
+      <div className="flex flex-row justify-between">
         <Moodcontext.Provider value={moods.Demo}>
           <PassDataComponent name="Mriganka Saha" number="1234" />
           <PassDataComponent name="Somnath Roy" number="4567" />
